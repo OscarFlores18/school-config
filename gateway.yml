@@ -1,3 +1,4 @@
+```yaml
 server:
   port: 8080
 
@@ -11,33 +12,33 @@ spring:
         webmvc:
           routes:
 
-            # =========================
-            # ALUMNO
-            # =========================
+            # ========================================
+            # MICROSERVICIO ALUMNO
+            # ========================================
             - id: alumnos
               uri: lb://MS-ALUMNOS
               predicates:
                 - Path=/api/alumnos/**
 
-            # =========================
-            # ADMINISTRACION
-            # =========================
+            # ========================================
+            # MICROSERVICIO ADMINISTRACION
+            # ========================================
             - id: administracion
               uri: lb://ADMINISTRACION
               predicates:
                 - Path=/api/administracion/**
 
-            # =========================
-            # CURSOS
-            # =========================
+            # ========================================
+            # MICROSERVICIO CURSOS
+            # ========================================
             - id: cursos
               uri: lb://CURSOS
               predicates:
                 - Path=/api/cursos/**
 
-            # =========================
-            # SWAGGER ALUMNO
-            # =========================
+            # ========================================
+            # SWAGGER - ALUMNO
+            # ========================================
             - id: swagger-alumnos-ui
               uri: lb://MS-ALUMNOS
               predicates:
@@ -52,9 +53,9 @@ spring:
               filters:
                 - StripPrefix=1
 
-            # =========================
-            # SWAGGER ADMINISTRACION
-            # =========================
+            # ========================================
+            # SWAGGER - ADMINISTRACION
+            # ========================================
             - id: swagger-administracion-ui
               uri: lb://ADMINISTRACION
               predicates:
@@ -69,9 +70,9 @@ spring:
               filters:
                 - StripPrefix=1
 
-            # =========================
-            # SWAGGER CURSOS
-            # =========================
+            # ========================================
+            # SWAGGER - CURSOS
+            # ========================================
             - id: swagger-cursos-ui
               uri: lb://CURSOS
               predicates:
@@ -86,6 +87,9 @@ spring:
               filters:
                 - StripPrefix=1
 
+# ========================================
+# EUREKA
+# ========================================
 eureka:
   client:
     service-url:
@@ -94,8 +98,12 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 10
 
+# ========================================
+# ACTUATOR
+# ========================================
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+```
