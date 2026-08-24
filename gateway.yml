@@ -12,7 +12,7 @@ spring:
           routes:
 
             # ========================================
-            # API - ALUMNO
+            # API ALUMNO
             # ========================================
             - id: alumnos
               uri: lb://MS-ALUMNOS
@@ -20,7 +20,7 @@ spring:
                 - Path=/api/alumnos/**
 
             # ========================================
-            # API - ADMINISTRACION
+            # API ADMINISTRACION
             # ========================================
             - id: administracion
               uri: lb://MS-ADMINISTRACION
@@ -28,72 +28,25 @@ spring:
                 - Path=/api/administracion/**
 
             # ========================================
-            # API - CURSOS
+            # API CURSOS
             # ========================================
             - id: cursos
-              uri: lb://MS-CURSOS
+              uri: lb://CURSOS
               predicates:
                 - Path=/api/cursos/**
 
             # ========================================
-            # SWAGGER - ALUMNO
+            # SWAGGER ADMINISTRACION
             # ========================================
-            - id: swagger-alumnos-ui
-              uri: lb://MS-ALUMNOS
-              predicates:
-                - Path=/alumnos/swagger-ui/**
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix,/alumnos
-
-            - id: swagger-alumnos-api
-              uri: lb://MS-ALUMNOS
-              predicates:
-                - Path=/alumnos/v3/api-docs/**
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix,/alumnos
-
-            # ========================================
-            # SWAGGER - ADMINISTRACION
-            # ========================================
-            # ========================================
-            # SWAGGER - ADMINISTRACION
-            # ========================================
-            - id: swagger-administracion-ui
+            - id: swagger-admin
               uri: lb://MS-ADMINISTRACION
               predicates:
-                - Path=/administracion/swagger-ui/**
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix,/administracion
-            
-            - id: swagger-administracion-api
+                - Path=/swagger-ui/**
+
+            - id: swagger-admin-api
               uri: lb://MS-ADMINISTRACION
               predicates:
-                - Path=/administracion/v3/api-docs/**
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix,/administracion
-
-            # ========================================
-            # SWAGGER - CURSOS
-            # ========================================
-            - id: swagger-cursos-ui
-              uri: lb://MS-CURSOS
-              predicates:
-                - Path=/cursos/swagger-ui/**
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix,/cursos
-
-            - id: swagger-cursos-api
-              uri: lb://MS-CURSOS
-              predicates:
-                - Path=/cursos/v3/api-docs/**
-              filters:
-                - StripPrefix=1
-                - AddRequestHeader=X-Forwarded-Prefix,/cursos
+                - Path=/v3/api-docs/**
 
 # ========================================
 # EUREKA
