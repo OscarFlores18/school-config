@@ -38,26 +38,53 @@ spring:
             # =========================
             # SWAGGER ALUMNO
             # =========================
-            - id: swagger-alumnos
+            - id: swagger-alumnos-ui
               uri: lb://MS-ALUMNOS
               predicates:
                 - Path=/alumnos/swagger-ui/**
+              filters:
+                - StripPrefix=1
+
+            - id: swagger-alumnos-api
+              uri: lb://MS-ALUMNOS
+              predicates:
+                - Path=/alumnos/v3/api-docs/**
+              filters:
+                - StripPrefix=1
 
             # =========================
             # SWAGGER ADMINISTRACION
             # =========================
-            - id: swagger-administracion
+            - id: swagger-administracion-ui
               uri: lb://ADMINISTRACION
               predicates:
                 - Path=/administracion/swagger-ui/**
+              filters:
+                - StripPrefix=1
+
+            - id: swagger-administracion-api
+              uri: lb://ADMINISTRACION
+              predicates:
+                - Path=/administracion/v3/api-docs/**
+              filters:
+                - StripPrefix=1
 
             # =========================
             # SWAGGER CURSOS
             # =========================
-            - id: swagger-cursos
+            - id: swagger-cursos-ui
               uri: lb://CURSOS
               predicates:
                 - Path=/cursos/swagger-ui/**
+              filters:
+                - StripPrefix=1
+
+            - id: swagger-cursos-api
+              uri: lb://CURSOS
+              predicates:
+                - Path=/cursos/v3/api-docs/**
+              filters:
+                - StripPrefix=1
 
 eureka:
   client:
