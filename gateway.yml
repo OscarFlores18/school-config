@@ -57,6 +57,9 @@ spring:
             # ========================================
             # SWAGGER - ADMINISTRACION
             # ========================================
+            # ========================================
+            # SWAGGER - ADMINISTRACION
+            # ========================================
             - id: swagger-administracion-ui
               uri: lb://MS-ADMINISTRACION
               predicates:
@@ -64,7 +67,7 @@ spring:
               filters:
                 - StripPrefix=1
                 - AddRequestHeader=X-Forwarded-Prefix,/administracion
-
+            
             - id: swagger-administracion-api
               uri: lb://MS-ADMINISTRACION
               predicates:
