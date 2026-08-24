@@ -12,7 +12,7 @@ spring:
           routes:
 
             # ========================================
-            # MICROSERVICIO ALUMNO
+            # API - ALUMNO
             # ========================================
             - id: alumnos
               uri: lb://MS-ALUMNOS
@@ -20,7 +20,7 @@ spring:
                 - Path=/api/alumnos/**
 
             # ========================================
-            # MICROSERVICIO ADMINISTRACION
+            # API - ADMINISTRACION
             # ========================================
             - id: administracion
               uri: lb://MS-ADMINISTRACION
@@ -28,7 +28,7 @@ spring:
                 - Path=/api/administracion/**
 
             # ========================================
-            # MICROSERVICIO CURSOS
+            # API - CURSOS
             # ========================================
             - id: cursos
               uri: lb://MS-CURSOS
@@ -44,6 +44,7 @@ spring:
                 - Path=/alumnos/swagger-ui/**
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix,/alumnos
 
             - id: swagger-alumnos-api
               uri: lb://MS-ALUMNOS
@@ -51,6 +52,7 @@ spring:
                 - Path=/alumnos/v3/api-docs/**
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix,/alumnos
 
             # ========================================
             # SWAGGER - ADMINISTRACION
@@ -61,6 +63,7 @@ spring:
                 - Path=/administracion/swagger-ui/**
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix,/administracion
 
             - id: swagger-administracion-api
               uri: lb://MS-ADMINISTRACION
@@ -68,6 +71,7 @@ spring:
                 - Path=/administracion/v3/api-docs/**
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix,/administracion
 
             # ========================================
             # SWAGGER - CURSOS
@@ -78,6 +82,7 @@ spring:
                 - Path=/cursos/swagger-ui/**
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix,/cursos
 
             - id: swagger-cursos-api
               uri: lb://MS-CURSOS
@@ -85,6 +90,7 @@ spring:
                 - Path=/cursos/v3/api-docs/**
               filters:
                 - StripPrefix=1
+                - AddRequestHeader=X-Forwarded-Prefix,/cursos
 
 # ========================================
 # EUREKA
