@@ -1,3 +1,4 @@
+```yaml
 server:
   port: 8080
 
@@ -11,21 +12,65 @@ spring:
         webmvc:
           routes:
 
+            # =========================
+            # ALUMNO
+            # =========================
             - id: alumnos
               uri: lb://MS-ALUMNOS
               predicates:
                 - Path=/api/alumnos/**
 
-            - id: cursos
-              uri: lb://MS-CURSOS
-              predicates:
-                - Path=/api/cursos/**
-
+            # =========================
+            # ADMINISTRACION
+            # =========================
             - id: administracion
-              uri: lb://MS-ADMINISTRACION
+              uri: lb://ADMINISTRACION
               predicates:
                 - Path=/api/administracion/**
 
+            # =========================
+            # CURSOS
+            # =========================
+            - id: cursos
+              uri: lb://CURSOS
+              predicates:
+                - Path=/api/cursos/**
+
+            # =========================
+            # SWAGGER ALUMNO
+            # =========================
+            - id: swagger-alumnos
+              uri: lb://MS-ALUMNOS
+              predicates:
+                - Path=/alumnos/swagger-ui/**
+
+            # =========================
+            # SWAGGER ADMINISTRACION
+            # =========================
+            - id: swagger-administracion
+              uri: lb://ADMINISTRACION
+              predicates:
+                - Path=/administracion/swagger-ui/**
+
+            # =========================
+            # SWAGGER CURSOS
+            # =========================
+            - id: swagger-cursos
+              uri: lb://CURSOS
+              predicates:
+                - Path=/cursos/swagger-ui/**
+
 eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
   instance:
     lease-renewal-interval-in-seconds: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+```
