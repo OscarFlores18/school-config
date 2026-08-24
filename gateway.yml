@@ -2,26 +2,95 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: gateway
+
   cloud:
     gateway:
       server:
         webmvc:
           routes:
 
+            # =========================
+            # SWAGGER - ALUMNOS
+            # =========================
+            - id: alumnos-swagger
+              uri: lb://MS-ALUMNOS
+              predicates:
+                - Path=/api/alumnos/swagger-ui/**
+              filters:
+                - StripPrefix=2
+
+            - id: alumnos-api-docs
+              uri: lb://MS-ALUMNOS
+              predicates:
+                - Path=/api/alumnos/v3/api-docs/**
+              filters:
+                - StripPrefix=2
+
+            # =========================
+            # SWAGGER - CURSOS
+            # =========================
+            - id: cursos-swagger
+              uri: lb://MS-CURSOS
+              predicates:
+                - Path=/api/cursos/swagger-ui/**
+              filters:
+                - StripPrefix=2
+
+            - id: cursos-api-docs
+              uri: lb://MS-CURSOS
+              predicates:
+                - Path=/api/cursos/v3/api-docs/**
+              filters:
+                - StripPrefix=2
+
+            # =========================
+            # SWAGGER - ADMINISTRACION
+            # =========================
+            - id: administracion-swagger
+              uri: lb://MS-ADMINISTRACION
+              predicates:
+                - Path=/api/administracion/swagger-ui/**
+              filters:
+                - StripPrefix=2
+
+            - id: administracion-api-docs
+              uri: lb://MS-ADMINISTRACION
+              predicates:
+                - Path=/api/administracion/v3/api-docs/**
+              filters:
+                - StripPrefix=2
+
+            # =========================
+            # API - ALUMNOS
+            # =========================
             - id: alumnos
               uri: lb://MS-ALUMNOS
               predicates:
                 - Path=/api/alumnos/**
+              filters:
+                - StripPrefix=2
 
+            # =========================
+            # API - CURSOS
+            # =========================
             - id: cursos
               uri: lb://MS-CURSOS
               predicates:
                 - Path=/api/cursos/**
+              filters:
+                - StripPrefix=2
 
+            # =========================
+            # API - ADMINISTRACION
+            # =========================
             - id: administracion
               uri: lb://MS-ADMINISTRACION
               predicates:
                 - Path=/api/administracion/**
+              filters:
+                - StripPrefix=2
 
 eureka:
   instance:
