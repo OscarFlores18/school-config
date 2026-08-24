@@ -23,7 +23,7 @@ spring:
             # MICROSERVICIO ADMINISTRACION
             # ========================================
             - id: administracion
-              uri: lb://ADMINISTRACION
+              uri: lb://MS-ADMINISTRACION
               predicates:
                 - Path=/api/administracion/**
 
@@ -31,7 +31,7 @@ spring:
             # MICROSERVICIO CURSOS
             # ========================================
             - id: cursos
-              uri: lb://CURSOS
+              uri: lb://MS-CURSOS
               predicates:
                 - Path=/api/cursos/**
 
@@ -56,14 +56,14 @@ spring:
             # SWAGGER - ADMINISTRACION
             # ========================================
             - id: swagger-administracion-ui
-              uri: lb://ADMINISTRACION
+              uri: lb://MS-ADMINISTRACION
               predicates:
                 - Path=/administracion/swagger-ui/**
               filters:
                 - StripPrefix=1
 
             - id: swagger-administracion-api
-              uri: lb://ADMINISTRACION
+              uri: lb://MS-ADMINISTRACION
               predicates:
                 - Path=/administracion/v3/api-docs/**
               filters:
@@ -73,14 +73,14 @@ spring:
             # SWAGGER - CURSOS
             # ========================================
             - id: swagger-cursos-ui
-              uri: lb://CURSOS
+              uri: lb://MS-CURSOS
               predicates:
                 - Path=/cursos/swagger-ui/**
               filters:
                 - StripPrefix=1
 
             - id: swagger-cursos-api
-              uri: lb://CURSOS
+              uri: lb://MS-CURSOS
               predicates:
                 - Path=/cursos/v3/api-docs/**
               filters:
