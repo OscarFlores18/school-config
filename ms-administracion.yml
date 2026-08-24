@@ -1,6 +1,8 @@
 server:
   port: 8083
 
+  forward-headers-strategy: framework
+
 spring:
   datasource:
     url: jdbc:h2:file:./data/administracion
@@ -15,7 +17,3 @@ spring:
   h2:
     console:
       enabled: true
-
-springdoc:
-  swagger-ui:
-    enabled: true
