@@ -52,15 +52,11 @@ spring:
               uri: lb://MS-ADMINISTRACION
               predicates:
                 - Path=/api/administracion/swagger-ui/**
-              filters:
-                - StripPrefix=2
-
+              
             - id: administracion-api-docs
               uri: lb://MS-ADMINISTRACION
               predicates:
                 - Path=/api/administracion/v3/api-docs/**
-              filters:
-                - StripPrefix=2
 
             # =========================
             # API - ALUMNOS
