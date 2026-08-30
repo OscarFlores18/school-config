@@ -14,3 +14,8 @@ spring:
     admin:
       client:
         url: http://localhost:8084
+        
+springdoc:
+  swagger-ui:
+    config-url: ../v3/api-docs/swagger-config
+    url: ../v3/api-docs
